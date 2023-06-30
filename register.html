@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Sign In</title>
+
+</head>
+<body>
+	<header>
+        <nav>
+            <div class="logo">Flight Booker</div>
+            <ul>
+                <li><a href="login.php">Log In</a></li>
+                <li><a href="index.php">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+	<main class="login">
+		
+		<form id="register-form" action="registration.php" method="post">
+			<h2>Sign Up/Registration</h2><br>
+			<p style="font-size:0.8rem; color:red">*Required Field</p><br>
+			<div class="form-group">
+				<label for="username">*Username:</label>
+				<input type="text" id="username" name="Username" placeholder="Username" required>
+			</div>
+			<div class="form-group">	
+				<label for="password">*Password:</label>
+				<input type="password" id="password" name="Password" placeholder="Password # more than 6 characters" required>
+			</div>
+			<div class="form-group">	
+				<label for="firstName">*First Name:</label>
+				<input type="text" id="firstName" name="FirstName" placeholder="First Name" required>
+			</div>
+			<div class="form-group">
+				<label for="lastName">*Last Name:</label>
+				<input type="text" id="lastName" name="LastName" placeholder="Last Name" required>
+			</div>
+			<div class="form-group">	
+				<label for="email">*Email:</label>
+				<input type="email" id="email" name="Email" placeholder="E-mail" required>
+			</div>
+			<div class="form-group">
+				<label for="address">*Address:</label>
+				<input type="text" id="address" name="BillingAddress" placeholder="Billing Address" required>
+			</div>
+			<input id="button" type="submit" value="Register">
+		</form>
+	</main>
+	
+	<script>
+	  document.getElementById("register-form").addEventListener("submit", function(event) {
+		const username = document.getElementById("username").value;
+		const password = document.getElementById("password").value;
+		const firstName = document.getElementById("firstName").value;
+		const lastName = document.getElementById("lastName").value;
+		const email = document.getElementById("email").value;
+		const address = document.getElementById("address").value;
+		
+		// Perform custom validation checks
+		if (username.length < 3 || username.length > 15) {
+		  alert("Username must be between 3 and 15 characters long.");
+		  event.preventDefault();
+		} else if (password.length < 6) {
+		  alert("Password must be at least 6 characters long.");
+		  event.preventDefault();
+		}
+		
+	  });
+	</script>
+  </body>
+  </html>

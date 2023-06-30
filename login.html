@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Log In</title>
+
+</head>
+
+<body>
+	<header>
+		<nav>
+			<div class="logo">Flight Booker</div>
+			<ul>
+				<li><a href="register.html">Sign In</a></li>
+				<li><a href="index.php">Home</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main class="login">
+		<form id="login-form" action="login.php" method="post">
+			<h2>Log In</h2>
+			<br>
+			<div class="form-group">
+				<label for="login_username">Username:</label>
+				<input type="text" id="login_username" name="Username" placeholder="Username" required>
+			</div>
+			<div class="form-group">
+				<label for="login_password">Password:</label>
+				<input type="password" id="login_password" name="Password" placeholder="Password" required>
+			</div>
+			<input id="button" type="submit" value="Log In">
+
+		</form>
+	</main>
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+		const error = urlParams.get('error');
+
+		if (error) {
+			let errorMessage = '';
+
+			switch (error) {
+				case 'incorrect_password':
+					errorMessage = 'Incorrect password.';
+					break;
+				case 'username_not_found':
+					errorMessage = 'Username not found.';
+					break;
+			}
+
+			if (errorMessage) {
+				const errorDiv = document.createElement('div');
+				errorDiv.innerHTML = errorMessage;
+				errorDiv.style.color = 'red';
+				const loginForm = document.getElementById('button');
+				loginForm.parentNode.insertBefore(errorDiv, loginForm);
+			}
+		}
+	</script>
+
+</body>
+
+</html>
